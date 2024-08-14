@@ -1,0 +1,62 @@
+name: Audit, Lint and Tests
+
+on: [push]
+
+jobs:
+  main:
+    environment: test
+
+    env:
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: password
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.1
+          bundler-cache: true
+
+      - name: Install bundler
+        run: gem install bundler
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Run overcommit
+        run: |
+          git config --local user.name "Github CI"
+          git config --local user.email ci@example.com
+          bundle exec overcommit --sign
+          bundle exec overcommit --run
+
+      - name: Run vulnerability checks
+        run: |
+          bundle exec brakeman -q --no-summary
+          bundle exec bundle-audit check --update -v
+
+      - name: Run tests
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rspec --drb --colour --order rand
