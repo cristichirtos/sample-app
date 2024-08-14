@@ -1,7 +1,7 @@
 # Setup
 
 1. Make sure you have ruby 3.2.1 installed. Use rbenv or rvm for managing ruby versions.
-2. Make sure you have the 5432 port free for the database container.
+2. Make sure you have the 5432 & 6379 ports free for postgres and redis.
 3. Run `docker-compose up -d`.
 4. Run `bundle install`.
 5. Run `bundle exec rspec` to ensure tests are working.
