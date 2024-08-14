@@ -1,0 +1,10 @@
+en:
+  devise:
+    mailer:
+      reset_password_instructions:
+        subject: 'Reset your CHANGE_THIS_TO_YOUR_APP_NAME password'
+      confirmation_instructions:
+        subject: 'Confirm your email address for CHANGE_THIS_TO_YOUR_APP_NAME'
+    failure:
+      unconfirmed: 'You must confirm your email address before continuing.'
+      invalid: 'Incorrect email or password.'

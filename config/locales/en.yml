@@ -1,0 +1,23 @@
+en:
+  errors:
+    attributes:
+      password:
+        complexity_not_met: must contain at least 8 characters, a digit and a special character
+    validation_failed: Validation Failed.
+    invalid_password: Current password is invalid
+    auth:
+      account_not_confirmed: Your account is not confirmed. Please check your email for the confirmation link.
+      invalid_link: Invalid link.
+  mailers:
+    user_mailer:
+      confirmation_instructions:
+        title: Confirm your email address
+        greetings: Hello, %{user}
+        main_body: Welcome to CHANGE_THIS_TO_YOUR_APP_NAME! Your account is almost ready. Please click the button below to confirm your email address..
+        button_text: Confirm email address
+        contact:
+          body: If you did not sign up for CHANGE_THIS_TO_YOUR_APP_NAME, please ignore this email.
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: Confirm your CHANGE_THIS_TO_YOUR_APP_NAME account

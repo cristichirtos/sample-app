@@ -1,0 +1,93 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  NewCops: enable
+  TargetRubyVersion: 3.2.1
+  SuggestExtensions: false
+  Exclude:
+    - "bin/*"
+    - Capfile
+    - config/boot.rb
+    - config/environment.rb
+    - config/initializers/version.rb
+    - db/schema.rb
+    - db/migrate/*
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "lib/generators/*"
+    - "app/admin/*"
+    - "doc/**/*"
+    - Gemfile
+    - Rakefile
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Layout/LineLength:
+  Max: 150
+  Exclude:
+    - "config/**/*"
+    - "db/**/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - "config/**/*"
+    - "spec/**/*"
+
+Metrics/ClassLength:
+  Max: 300
+  Exclude:
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Max: 12
+  Exclude:
+    - "db/migrate/*"
+    - "spec/**/*"
+
+Naming/PredicateName:
+  Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/validators/**/*"
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - and
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

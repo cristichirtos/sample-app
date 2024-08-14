@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV["DATABASE_POOL"] || ENV["SIDEKIQ_WORKERS_PROCFILE"] || ENV["RAILS_MAX_THREADS"] || 50 %>
+  encoding: unicode
+  host: localhost
+  port: 5432
+  database: sample_app_development
+
+development:
+  <<: *default
+  username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "password") %>
+
+test:
+  <<: *default
+  database: sample_app_test
+  username: <%= ENV.fetch("POSTGRES_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "password") %>
